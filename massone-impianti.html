@@ -200,7 +200,6 @@
     .nav-links a { color: var(--muted); font-size: .88rem; font-weight: 600; transition: color .2s; padding-bottom: 2px; border-bottom: 2px solid transparent; }
     .nav-links a:hover,
     .nav-links a:focus-visible { color: var(--navy); border-bottom-color: var(--gold); outline: none; }
-    .nav-cta { display: none; flex-shrink: 0; }
     .hamburger {
       display: flex; flex-direction: column; gap: 5px;
       cursor: pointer; padding: 8px; background: none; border: none;
@@ -225,17 +224,23 @@
       padding: 10px 16px;
       font-size: .88rem;
       font-weight: 600;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
     .urgency-bar a {
       background: var(--white);
       color: var(--red);
       font-weight: 800;
-      padding: 5px 14px;
+      padding: 6px 18px;
       border-radius: 6px;
-      margin-left: 10px;
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       min-height: 36px;
       line-height: 1.2;
+      white-space: nowrap;
     }
     .urgency-bar a:hover { filter: brightness(.95); }
 
@@ -639,19 +644,30 @@
     .a11y-reset-row .a11y-btn { width: 100%; }
 
     /* ─── ACCESSIBILITY BODY CLASSES ─────────────────────────────── */
-    body.a11y-high-contrast { filter: contrast(1.8); }
-    body.a11y-grayscale     { filter: grayscale(1); }
-    body.a11y-high-contrast.a11y-grayscale { filter: contrast(1.8) grayscale(1); }
+    /* Filtri applicati a #page-wrap (non a body) per preservare
+       position:fixed dei widget a11y, cookie banner e modali */
+    body.a11y-high-contrast #page-wrap { filter: contrast(1.85); }
+    body.a11y-grayscale     #page-wrap { filter: grayscale(1); }
+    body.a11y-high-contrast.a11y-grayscale #page-wrap { filter: contrast(1.85) grayscale(1); }
     body.a11y-underline a   { text-decoration: underline !important; }
+    /* Wrap base */
+    #page-wrap { transition: filter .25s; }
+
+    /* ─── OVERFLOW SAFETY (grandi dimensioni testo a11y) ────────── */
+    .btn, .nav-links a, .service-title, .review-meta .name {
+      overflow-wrap: break-word; word-break: break-word;
+    }
+    .hero-stats, .stat-band-grid { overflow: hidden; }
+    .h-stat .n, .stat-item .n { white-space: nowrap; }
+    .nav-inner { flex-wrap: wrap; gap: 8px; }
 
     /* ─── RESPONSIVE: ≥640px ─────────────────────────────────────── */
     @media (min-width: 640px) {
       .container { padding: 0 24px; }
       .section    { padding: 72px 0; }
       .top-bar-inner { justify-content: space-between; }
-      .nav-links  { display: flex; }
-      .nav-cta    { display: flex; }
-      .hamburger  { display: none; }
+      .nav-links { display: flex; }
+      .hamburger { display: none; }
       #mobile-menu { display: none !important; }
       .hero-actions { flex-direction: row; flex-wrap: wrap; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -738,6 +754,9 @@
 <!-- ── SKIP LINK (accessibilità) ── -->
 <a href="#main-content" class="skip-link">Vai al contenuto principale</a>
 
+<!-- ── PAGE WRAP (filtri a11y applicati qui, non sul body) ── -->
+<div id="page-wrap">
+
 <!-- ── TOP BAR ── -->
 <div class="top-bar" role="complementary" aria-label="Informazioni di contatto">
   <div class="container top-bar-inner">
@@ -766,7 +785,6 @@
         <li><a href="#recensioni">Recensioni</a></li>
         <li><a href="#contattaci">Contatti</a></li>
       </ul>
-      <a href="tel:3387326239" class="btn btn-gold nav-cta" aria-label="Chiama ora al 338 732 6239">📞 338 732 6239</a>
       <button
         class="hamburger"
         id="hamburger"
@@ -794,7 +812,7 @@
 <!-- ── URGENCY BAR ── -->
 <div class="urgency-bar" role="alert" aria-live="polite">
   🚨 Guasto elettrico improvviso? Interveniamo subito!
-  <a href="tel:3387326239" aria-label="Chiama ora per emergenza elettrica">Chiama ora →</a>
+  <a href="tel:3387326239" aria-label="Chiama ora per emergenza elettrica">Chiama ora</a>
 </div>
 
 <!-- ── MAIN CONTENT ── -->
@@ -1283,6 +1301,8 @@
   </div>
 </footer>
 
+</div><!-- /#page-wrap -->
+
 <!-- ── SCROLL TOP ── -->
 <button id="scrollTop" aria-label="Torna all'inizio della pagina">↑</button>
 
@@ -1292,8 +1312,8 @@
   aria-label="Opzioni di accessibilità"
   aria-expanded="false"
   aria-controls="a11y-panel"
-  title="Accessibilità"
->♿</button>
+  title="Impostazioni di accessibilità"
+><span aria-hidden="true" style="font-size:.95rem;font-weight:900;letter-spacing:-.05em;">Aa</span></button>
 
 <div
   id="a11y-panel"
