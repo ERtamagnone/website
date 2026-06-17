@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Massone Impianti – Elettricista a Rapallo. Intervento rapido per guasti elettrici improvvisi, impianti civili, domotica, tapparelle e cancelli automatici. Chiama il 338 732 6239." />
+  <meta name="keywords" content="elettricista Rapallo, guasti elettrici, impianti elettrici, domotica, tapparelle elettriche, cancelli automatici, Massone Impianti" />
+  <meta name="robots" content="index, follow" />
+  <title>Massone Impianti – Elettricista a Rapallo | Intervento Rapido</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── DESIGN TOKENS ─────────────────────────────────────────── */
+    :root {
+      --navy:    #1b3a6b;
+      --navy2:   #254e96;
+      --gold:    #d4820a;
+      --gold2:   #f0a030;
+      --red:     #c0392b;
+      --white:   #ffffff;
+      --light:   #f4f6f9;
+      --light2:  #eaecf0;
+      --text:    #1a1f2e;
+      --muted:   #5a6478;
+      --border:  #dde1ea;
+      --radius:  8px;
+      --shadow:  0 2px 16px rgba(27,58,107,.10);
+      --shadow2: 0 8px 32px rgba(27,58,107,.15);
+      --focus:   0 0 0 3px rgba(27,58,107,.45);
+    }
+
+    /* ─── BASE / MOBILE-FIRST ───────────────────────────────────── */
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+      background: var(--white);
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 1rem;
+      -webkit-text-size-adjust: 100%;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ─── ACCESSIBILITY: SKIP LINK ──────────────────────────────── */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 16px;
+      background: var(--navy);
+      color: var(--white);
+      padding: 10px 18px;
+      border-radius: 0 0 var(--radius) var(--radius);
+      font-weight: 700;
+      font-size: .9rem;
+      z-index: 9999;
+      transition: top .2s;
+    }
+    .skip-link:focus { top: 0; outline: 3px solid var(--gold2); outline-offset: 2px; }
+
+    /* ─── FOCUS VISIBLE (WCAG 2.4.7) ───────────────────────────── */
+    :focus-visible {
+      outline: 3px solid var(--navy);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    :focus:not(:focus-visible) { outline: none; }
+
+    /* ─── UTILITY ────────────────────────────────────────────────── */
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 16px; }
+    .section    { padding: 56px 0; }
+    .section--alt { background: var(--light); }
+    .sr-only {
+      position: absolute; width: 1px; height: 1px;
+      padding: 0; margin: -1px; overflow: hidden;
+      clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+    .tag {
+      display: inline-block;
+      background: rgba(27,58,107,.08);
+      color: var(--navy);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(27,58,107,.15);
+    }
+    h2.section-title {
+      font-size: clamp(1.4rem, 5vw, 2.1rem);
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 12px;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+    }
+    h2.section-title span { color: var(--gold); }
+    .section-sub { color: var(--muted); font-size: .95rem; max-width: 580px; line-height: 1.7; }
+    .section-header { margin-bottom: 40px; }
+
+    /* Buttons — min 44×44px touch target (WCAG 2.5.5) */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 12px 22px;
+      border-radius: var(--radius);
+      font-family: inherit;
+      font-weight: 700;
+      font-size: .95rem;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: transform .18s, box-shadow .18s, background .18s, color .18s;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-navy  { background: var(--navy);  color: var(--white); border-color: var(--navy);  box-shadow: 0 4px 14px rgba(27,58,107,.3); }
+    .btn-navy:hover  { background: var(--navy2); border-color: var(--navy2); box-shadow: 0 8px 22px rgba(27,58,107,.35); }
+    .btn-gold  { background: var(--gold);  color: var(--white); border-color: var(--gold);  box-shadow: 0 4px 14px rgba(212,130,10,.3); }
+    .btn-gold:hover  { filter: brightness(1.08); box-shadow: 0 8px 22px rgba(212,130,10,.35); }
+    .btn-outline-navy { background: transparent; color: var(--navy); border-color: var(--navy); }
+    .btn-outline-navy:hover { background: var(--navy); color: var(--white); }
+    .btn-white { background: var(--white); color: var(--navy); border-color: var(--white); font-weight: 800; box-shadow: 0 4px 18px rgba(0,0,0,.2); }
+    .btn-white:hover { background: #f0f4ff; box-shadow: 0 8px 28px rgba(0,0,0,.25); }
+    .btn-ghost { background: rgba(255,255,255,.12); color: var(--white); border-color: rgba(255,255,255,.35); }
+    .btn-ghost:hover { background: rgba(255,255,255,.22); border-color: rgba(255,255,255,.6); }
+    .btn-big { min-height: 52px; padding: 14px 28px; font-size: 1rem; border-radius: 10px; }
+    .link-btn {
+      background: none; border: none; padding: 0;
+      color: var(--navy); font-family: inherit; font-size: inherit;
+      font-weight: 700; text-decoration: underline; cursor: pointer;
+    }
+    .link-btn:hover { color: var(--gold); }
+
+    /* ─── TOP BAR ────────────────────────────────────────────────── */
+    .top-bar {
+      background: var(--navy);
+      color: rgba(255,255,255,.85);
+      font-size: .82rem;
+      padding: 8px 0;
+    }
+    .top-bar-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      text-align: center;
+    }
+    .top-bar a { color: rgba(255,255,255,.9); transition: color .2s; }
+    .top-bar a:hover { color: var(--white); }
+    .top-bar .tel { font-weight: 700; color: var(--white); font-size: .9rem; }
+    .top-bar-sep { opacity: .4; }
+
+    /* ─── NAVBAR ─────────────────────────────────────────────────── */
+    #navbar {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 0;
+      gap: 16px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      letter-spacing: -.02em;
+      flex-shrink: 0;
+    }
+    .nav-logo .logo-icon {
+      width: 38px; height: 38px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .nav-logo .sub { font-size: .65rem; font-weight: 500; color: var(--muted); display: block; margin-top: 1px; letter-spacing: .04em; text-transform: uppercase; }
+    .nav-links { display: none; align-items: center; gap: 24px; list-style: none; }
+    .nav-links a { color: var(--muted); font-size: .88rem; font-weight: 600; transition: color .2s; padding-bottom: 2px; border-bottom: 2px solid transparent; }
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--navy); border-bottom-color: var(--gold); outline: none; }
+    .nav-cta { display: none; flex-shrink: 0; }
+    .hamburger {
+      display: flex; flex-direction: column; gap: 5px;
+      cursor: pointer; padding: 8px; background: none; border: none;
+      min-width: 44px; min-height: 44px; align-items: center; justify-content: center;
+    }
+    .hamburger span { width: 24px; height: 2px; background: var(--navy); border-radius: 2px; transition: .3s; display: block; }
+    .hamburger[aria-expanded="true"] span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .hamburger[aria-expanded="true"] span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    #mobile-menu { display: none; flex-direction: column; background: var(--white); border-bottom: 1px solid var(--border); }
+    #mobile-menu.open { display: flex; }
+    #mobile-menu a { padding: 14px 16px; color: var(--muted); font-weight: 600; font-size: .92rem; border-bottom: 1px solid var(--light2); transition: color .2s, background .2s; min-height: 48px; display: flex; align-items: center; }
+    #mobile-menu a:hover,
+    #mobile-menu a:focus-visible { color: var(--navy); background: var(--light); }
+    .mobile-cta { padding: 14px 16px; }
+
+    /* ─── URGENCY BAR ────────────────────────────────────────────── */
+    .urgency-bar {
+      background: var(--red);
+      color: var(--white);
+      text-align: center;
+      padding: 10px 16px;
+      font-size: .88rem;
+      font-weight: 600;
+    }
+    .urgency-bar a {
+      background: var(--white);
+      color: var(--red);
+      font-weight: 800;
+      padding: 5px 14px;
+      border-radius: 6px;
+      margin-left: 10px;
+      display: inline-block;
+      min-height: 36px;
+      line-height: 1.2;
+    }
+    .urgency-bar a:hover { filter: brightness(.95); }
+
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    #hero {
+      background: linear-gradient(135deg, var(--navy) 0%, #254e96 55%, #1a3a6b 100%);
+      color: var(--white);
+      padding: 56px 0 64px;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute; top: -60px; right: -80px;
+      width: 380px; height: 380px;
+      background: radial-gradient(circle, rgba(212,130,10,.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; max-width: 620px; }
+    .hero-title {
+      font-size: clamp(1.9rem, 7vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -.03em;
+    }
+    .hero-title .accent { color: var(--gold2); }
+    .hero-subtitle { color: rgba(255,255,255,.82); font-size: .98rem; margin-bottom: 28px; line-height: 1.7; }
+    .hero-actions { display: flex; flex-direction: column; gap: 12px; margin-bottom: 40px; }
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .h-stat {
+      padding: 14px 10px;
+      border-right: 1px solid rgba(255,255,255,.15);
+      text-align: center;
+    }
+    .h-stat:last-child { border-right: none; }
+    .h-stat .n { font-size: 1.5rem; font-weight: 900; color: var(--gold2); line-height: 1; }
+    .h-stat .l { font-size: .68rem; color: rgba(255,255,255,.7); text-transform: uppercase; letter-spacing: .07em; margin-top: 4px; }
+    /* Hero card visible only on desktop — hidden on mobile */
+    .hero-card { display: none; }
+
+    /* ─── SERVICES ───────────────────────────────────────────────── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px 18px;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+    }
+    .service-card:hover { border-color: var(--navy2); box-shadow: var(--shadow2); transform: translateY(-2px); }
+    .service-card.urgent { border-color: rgba(192,57,43,.3); border-left: 4px solid var(--red); }
+    .service-card.urgent:hover { border-color: var(--red); }
+    .service-icon-wrap {
+      width: 48px; height: 48px;
+      background: var(--light);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 14px;
+    }
+    .service-card.urgent .service-icon-wrap { background: rgba(192,57,43,.08); }
+    .service-title { font-size: .97rem; font-weight: 700; color: var(--navy); margin-bottom: 6px; }
+    .service-desc  { color: var(--muted); font-size: .87rem; line-height: 1.6; }
+    .service-tag {
+      display: inline-block;
+      background: rgba(192,57,43,.1); color: var(--red);
+      font-size: .7rem; font-weight: 700;
+      padding: 3px 10px; border-radius: 99px;
+      margin-bottom: 8px; letter-spacing: .06em; text-transform: uppercase;
+    }
+
+    /* ─── STAT BAND ──────────────────────────────────────────────── */
+    .stat-band { background: var(--navy); color: var(--white); padding: 44px 0; }
+    .stat-band-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+      text-align: center;
+    }
+    .stat-item {
+      padding: 18px 12px;
+      border-right: 1px solid rgba(255,255,255,.12);
+      border-bottom: 1px solid rgba(255,255,255,.12);
+    }
+    .stat-item:nth-child(2n) { border-right: none; }
+    .stat-item:nth-last-child(-n+2) { border-bottom: none; }
+    .stat-item .n { font-size: 2.2rem; font-weight: 900; color: var(--gold2); line-height: 1; }
+    .stat-item .l { font-size: .75rem; color: rgba(255,255,255,.7); margin-top: 6px; text-transform: uppercase; letter-spacing: .07em; }
+
+    /* ─── WHY US ─────────────────────────────────────────────────── */
+    .why-features { display: flex; flex-direction: column; gap: 14px; }
+    .why-feature {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px; background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; transition: border-color .2s, box-shadow .2s;
+    }
+    .why-feature:hover { border-color: var(--navy2); box-shadow: var(--shadow); }
+    .why-feature-icon {
+      flex-shrink: 0; width: 42px; height: 42px;
+      background: var(--navy); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+    }
+    .why-feature-body h3 { font-size: .93rem; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .why-feature-body p  { color: var(--muted); font-size: .85rem; }
+    .why-image-side {
+      background: var(--light); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px 24px; text-align: center; margin-top: 28px;
+    }
+    .big-rating { margin-bottom: 24px; }
+    .big-rating .stars { font-size: 1.8rem; color: #f0a030; letter-spacing: 3px; }
+    .big-rating .num   { font-size: 3.8rem; font-weight: 900; color: var(--navy); line-height: 1; margin-top: 6px; }
+    .big-rating .label { color: var(--muted); font-size: .82rem; margin-top: 4px; }
+    .mini-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px;
+    }
+    .mini-box {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 8px; text-align: center;
+    }
+    .mini-box .n { font-size: 1.3rem; font-weight: 900; color: var(--navy); }
+    .mini-box .l { font-size: .7rem; color: var(--muted); margin-top: 2px; }
+
+    /* ─── REVIEWS ────────────────────────────────────────────────── */
+    .highlights-row {
+      display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px;
+    }
+    .hl-box {
+      background: rgba(27,58,107,.05); border: 1px solid rgba(27,58,107,.12);
+      border-radius: 10px; padding: 16px;
+    }
+    .hl-quote { font-style: italic; color: var(--text); font-size: .88rem; line-height: 1.6; }
+    .reviews-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .review-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 12px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .review-card:hover { box-shadow: var(--shadow2); transform: translateY(-2px); }
+    .review-header { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .95rem; font-weight: 800; color: var(--white); flex-shrink: 0;
+    }
+    .review-meta .name { font-weight: 700; color: var(--text); font-size: .92rem; }
+    .review-meta .date { color: var(--muted); font-size: .77rem; margin-top: 1px; }
+    .review-stars { color: #f0a030; font-size: .88rem; letter-spacing: 2px; }
+    .review-text   { color: var(--muted); font-size: .87rem; line-height: 1.7; font-style: italic; }
+    .review-source { display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: .74rem; margin-top: auto; }
+    .g-dot { width: 7px; height: 7px; border-radius: 50%; background: #4285f4; flex-shrink: 0; }
+
+    /* ─── CONTACT FORM ───────────────────────────────────────────── */
+    .form-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: .88rem; font-weight: 600; color: var(--text);
+    }
+    .form-group label .req { color: var(--red); margin-left: 2px; }
+    .form-control {
+      width: 100%; min-height: 48px;
+      padding: 11px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      font-family: inherit; font-size: .93rem; color: var(--text);
+      background: var(--white);
+      transition: border-color .2s, box-shadow .2s;
+      -webkit-appearance: none;
+    }
+    .form-control:focus {
+      border-color: var(--navy);
+      box-shadow: var(--focus);
+      outline: none;
+    }
+    .form-control.invalid { border-color: var(--red); }
+    textarea.form-control { min-height: 120px; resize: vertical; }
+    .field-error {
+      display: none; font-size: .8rem; color: var(--red);
+      font-weight: 600; margin-top: 2px;
+    }
+    .field-error.visible { display: block; }
+    .form-check {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 14px; background: var(--light); border-radius: var(--radius);
+      border: 1.5px solid var(--border);
+    }
+    .form-check input[type="checkbox"] {
+      width: 20px; height: 20px; flex-shrink: 0;
+      margin-top: 2px; accent-color: var(--navy); cursor: pointer;
+    }
+    .form-check label { font-size: .88rem; color: var(--text); line-height: 1.5; cursor: pointer; }
+    #form-status {
+      padding: 14px 16px; border-radius: var(--radius);
+      font-weight: 600; font-size: .9rem; display: none;
+    }
+    #form-status.success { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+    #form-status.error   { background: #fdecea; color: #b71c1c; border: 1px solid #ef9a9a; }
+
+    /* ─── MAP / CONTACT ──────────────────────────────────────────── */
+    .area-map {
+      border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+      aspect-ratio: 4/3; box-shadow: var(--shadow); background: var(--light);
+      margin-bottom: 24px;
+    }
+    .area-map iframe { width: 100%; height: 100%; border: none; display: block; }
+    .map-placeholder {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: 12px;
+      padding: 24px; text-align: center; color: var(--muted);
+    }
+    .map-placeholder p { font-size: .88rem; line-height: 1.6; }
+    .contact-info { display: flex; flex-direction: column; gap: 14px; }
+    .c-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      padding: 16px; background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+    }
+    .c-icon {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: var(--navy); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+    }
+    .c-body h3 { font-size: .75rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 3px; }
+    .c-body p   { color: var(--muted); font-size: .88rem; line-height: 1.6; }
+    .c-body a   { color: var(--navy); font-weight: 800; font-size: 1.05rem; transition: color .2s; }
+    .c-body a:hover { color: var(--gold); }
+
+    /* ─── CTA SECTION ────────────────────────────────────────────── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy) 0%, #254e96 100%);
+      padding: 64px 0; text-align: center; color: var(--white);
+    }
+    .cta-section h2 { font-size: clamp(1.5rem, 5vw, 2.4rem); font-weight: 900; margin-bottom: 10px; letter-spacing: -.02em; }
+    .cta-section h2 span { color: var(--gold2); }
+    .cta-section p   { color: rgba(255,255,255,.75); font-size: .97rem; margin-bottom: 28px; }
+    .cta-actions { display: flex; flex-direction: column; gap: 12px; align-items: center; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      background: #0e1e36;
+      color: rgba(255,255,255,.8);
+      padding: 48px 0 24px;
+    }
+    .footer-brand { margin-bottom: 32px; }
+    .footer-logo  { font-size: 1.15rem; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+    .footer-logo span { color: var(--gold2); }
+    .footer-desc  { color: rgba(255,255,255,.6); font-size: .87rem; line-height: 1.7; max-width: 300px; }
+    .footer-cert  { display: inline-block; margin-top: 12px; border: 1px solid rgba(212,130,10,.4); color: var(--gold2); font-size: .73rem; font-weight: 700; padding: 4px 12px; border-radius: 6px; }
+    .footer-cols  { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+    .footer-col h4 { color: var(--white); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; margin-bottom: 14px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+    .footer-col ul li a { color: rgba(255,255,255,.55); font-size: .85rem; transition: color .2s; }
+    .footer-col ul li a:hover { color: var(--gold2); }
+    .footer-legal {
+      border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .footer-legal p   { color: rgba(255,255,255,.38); font-size: .78rem; }
+    .footer-legal-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-legal-links button {
+      background: none; border: none; padding: 0; color: rgba(255,255,255,.45);
+      font-family: inherit; font-size: .78rem; cursor: pointer; transition: color .2s;
+    }
+    .footer-legal-links button:hover { color: var(--gold2); }
+
+    /* ─── SCROLL TOP ─────────────────────────────────────────────── */
+    #scrollTop {
+      position: fixed; bottom: 80px; right: 16px;
+      width: 44px; height: 44px;
+      background: var(--navy); color: var(--white);
+      border: none; border-radius: 8px; font-size: 1rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(27,58,107,.35);
+      opacity: 0; transform: translateY(10px);
+      transition: opacity .3s, transform .3s;
+      z-index: 100;
+    }
+    #scrollTop.show { opacity: 1; transform: translateY(0); }
+    #scrollTop:hover { background: var(--navy2); }
+
+    /* ─── COOKIE BANNER ──────────────────────────────────────────── */
+    #cookie-banner {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 500;
+      background: #0e1e36;
+      color: var(--white);
+      padding: 16px;
+      border-top: 3px solid var(--gold);
+      box-shadow: 0 -4px 24px rgba(0,0,0,.3);
+    }
+    #cookie-banner.hidden { display: none; }
+    .cookie-inner { max-width: 1140px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .cookie-text { font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); }
+    .cookie-text button { background: none; border: none; padding: 0; color: var(--gold2); font-family: inherit; font-size: inherit; text-decoration: underline; cursor: pointer; }
+    .cookie-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cookie-btns .btn { min-height: 40px; padding: 8px 18px; font-size: .85rem; }
+
+    /* ─── PRIVACY MODAL ──────────────────────────────────────────── */
+    #privacy-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 600;
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    #privacy-overlay.hidden { display: none; }
+    #privacy-modal {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 28px 24px;
+      max-width: 580px; width: 100%;
+      max-height: 85vh; overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    .modal-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 12px; margin-bottom: 20px;
+    }
+    .modal-header h2 { font-size: 1.15rem; font-weight: 800; color: var(--navy); }
+    .modal-close {
+      background: var(--light); border: none; border-radius: 6px;
+      width: 36px; height: 36px; flex-shrink: 0;
+      cursor: pointer; font-size: 1.1rem; color: var(--text);
+      display: flex; align-items: center; justify-content: center; transition: background .2s;
+    }
+    .modal-close:hover { background: var(--light2); }
+    #privacy-modal h3 { font-size: .88rem; font-weight: 700; color: var(--navy); margin: 16px 0 6px; text-transform: uppercase; letter-spacing: .06em; }
+    #privacy-modal p  { font-size: .87rem; color: var(--muted); line-height: 1.7; }
+    #privacy-modal ul { font-size: .87rem; color: var(--muted); line-height: 1.7; padding-left: 20px; }
+
+    /* ─── RESPONSIVE: ≥640px ─────────────────────────────────────── */
+    @media (min-width: 640px) {
+      .container { padding: 0 24px; }
+      .section    { padding: 72px 0; }
+      .top-bar-inner { justify-content: space-between; }
+      .nav-links  { display: flex; }
+      .nav-cta    { display: flex; }
+      .hamburger  { display: none; }
+      #mobile-menu { display: none !important; }
+      .hero-actions { flex-direction: row; flex-wrap: wrap; }
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-band-grid { grid-template-columns: repeat(4, 1fr); }
+      .stat-item { border-bottom: none; }
+      .stat-item:nth-child(2n) { border-right: 1px solid rgba(255,255,255,.12); }
+      .stat-item:last-child { border-right: none; }
+      .highlights-row { flex-direction: row; }
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+      .form-grid { grid-template-columns: 1fr 1fr; }
+      .footer-cols { grid-template-columns: repeat(3, 1fr); }
+      .footer-legal { flex-direction: row; justify-content: space-between; align-items: center; }
+      .cta-actions { flex-direction: row; justify-content: center; }
+      .cookie-inner { flex-direction: row; align-items: center; justify-content: space-between; }
+      .cookie-text { flex: 1; }
+    }
+
+    /* ─── RESPONSIVE: ≥900px ─────────────────────────────────────── */
+    @media (min-width: 900px) {
+      .section { padding: 88px 0; }
+      .top-bar-inner { justify-content: space-between; }
+
+      /* Hero */
+      #hero { padding: 80px 0 88px; }
+      .hero-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: center; }
+      .hero-content { max-width: none; }
+      .hero-card {
+        display: block;
+        background: var(--white); border-radius: 16px;
+        box-shadow: 0 16px 48px rgba(0,0,0,.22); overflow: hidden;
+      }
+      .hero-card-head {
+        background: linear-gradient(135deg, #c0392b, #e74c3c);
+        color: var(--white); padding: 18px 22px;
+        display: flex; align-items: center; gap: 12px;
+      }
+      .hero-card-head .icon { font-size: 1.5rem; }
+      .hero-card-head h3 { font-size: .97rem; font-weight: 800; margin-bottom: 2px; }
+      .hero-card-head p  { font-size: .78rem; opacity: .85; }
+      .hero-card-body { padding: 22px; }
+      .hero-card-tel {
+        display: flex; align-items: center; justify-content: center; gap: 10px;
+        background: var(--navy); color: var(--white);
+        font-size: 1.35rem; font-weight: 900; padding: 14px;
+        border-radius: 10px; margin-bottom: 14px; letter-spacing: .02em; transition: background .2s;
+      }
+      .hero-card-tel:hover { background: var(--navy2); }
+      .hero-card-features { display: flex; flex-direction: column; gap: 9px; }
+      .hcf { display: flex; align-items: center; gap: 9px; font-size: .86rem; color: var(--muted); }
+      .hcf .check { color: #27ae60; font-size: .95rem; }
+      .hero-rating {
+        display: flex; align-items: center; gap: 10px;
+        background: #fffbf0; border: 1px solid #f0d080;
+        border-radius: 8px; padding: 10px 14px; margin-top: 14px;
+      }
+      .hero-rating .stars { color: #f0a030; font-size: .95rem; letter-spacing: 2px; }
+      .hero-rating .info { font-size: .8rem; }
+      .hero-rating .info strong { color: var(--text); }
+      .hero-rating .info span   { color: var(--muted); display: block; font-size: .73rem; }
+
+      /* Services 3 col */
+      .services-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+      /* Why 2-col */
+      .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+      .why-image-side { margin-top: 0; }
+
+      /* Reviews 3-col */
+      .reviews-grid { grid-template-columns: repeat(3, 1fr); }
+
+      /* Contact 2-col */
+      .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+      .area-map { margin-bottom: 0; }
+
+      /* Scroll top position with cookie banner */
+      #scrollTop { bottom: 28px; right: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── SKIP LINK (accessibilità) ── -->
+<a href="#main-content" class="skip-link">Vai al contenuto principale</a>
+
+<!-- ── TOP BAR ── -->
+<div class="top-bar" role="complementary" aria-label="Informazioni di contatto">
+  <div class="container top-bar-inner">
+    <span>📍 Via Del Boschetto 11, 16035 Rapallo (GE)</span>
+    <span class="top-bar-sep" aria-hidden="true">|</span>
+    <span>🕐 Lun–Sab 8:00–19:00</span>
+    <span class="top-bar-sep" aria-hidden="true">|</span>
+    <a href="tel:3387326239" class="tel" aria-label="Chiama Massone Impianti al 338 732 6239">📞 338 732 6239</a>
+  </div>
+</div>
+
+<!-- ── NAVBAR ── -->
+<header>
+  <nav id="navbar" aria-label="Navigazione principale">
+    <div class="container nav-inner">
+      <a href="#" class="nav-logo" aria-label="Massone Impianti – torna all'inizio">
+        <div class="logo-icon" aria-hidden="true">⚡</div>
+        <div>
+          Massone Impianti
+          <span class="sub">Soluzioni Tecnologiche</span>
+        </div>
+      </a>
+      <ul class="nav-links" role="list">
+        <li><a href="#servizi">Servizi</a></li>
+        <li><a href="#perche">Perché noi</a></li>
+        <li><a href="#recensioni">Recensioni</a></li>
+        <li><a href="#contattaci">Contatti</a></li>
+      </ul>
+      <a href="tel:3387326239" class="btn btn-gold nav-cta" aria-label="Chiama ora al 338 732 6239">📞 338 732 6239</a>
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Apri menu di navigazione"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+    <div id="mobile-menu" role="navigation" aria-label="Menu mobile">
+      <a href="#servizi">Servizi</a>
+      <a href="#perche">Perché noi</a>
+      <a href="#recensioni">Recensioni</a>
+      <a href="#contattaci">Contatti</a>
+      <div class="mobile-cta">
+        <a href="tel:3387326239" class="btn btn-gold" style="width:100%;" aria-label="Chiama ora">📞 338 732 6239</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- ── URGENCY BAR ── -->
+<div class="urgency-bar" role="alert" aria-live="polite">
+  🚨 Guasto elettrico improvviso? Interveniamo subito!
+  <a href="tel:3387326239" aria-label="Chiama ora per emergenza elettrica">📞 338 732 6239</a>
+</div>
+
+<!-- ── MAIN CONTENT ── -->
+<main id="main-content">
+
+  <!-- ── HERO ── -->
+  <section id="hero" aria-labelledby="hero-heading">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <h1 class="hero-title" id="hero-heading">
+          Elettricista a Rapallo<br/>
+          <span class="accent">Intervento Rapido</span><br/>
+          per ogni guasto
+        </h1>
+        <p class="hero-subtitle">
+          Guasti improvvisi, impianti da rifare, domotica, tapparelle e cancelli automatici.
+          Enrico Massone è il tuo punto di riferimento per ogni problema elettrico nella riviera ligure.
+        </p>
+        <div class="hero-actions">
+          <a href="tel:3387326239" class="btn btn-white btn-big" aria-label="Chiama ora Massone Impianti al 338 732 6239">
+            ⚡ Chiama ora – 338 732 6239
+          </a>
+          <a href="#servizi" class="btn btn-ghost btn-big">Scopri i servizi</a>
+        </div>
+        <div class="hero-stats" aria-label="Statistiche aziendali">
+          <div class="h-stat">
+            <div class="n" aria-label="Valutazione 5 su 5">5,0</div>
+            <div class="l">★★★★★ Google</div>
+          </div>
+          <div class="h-stat">
+            <div class="n" aria-label="Oltre 83 recensioni">83+</div>
+            <div class="l">Recensioni</div>
+          </div>
+          <div class="h-stat">
+            <div class="n" aria-label="Oltre 10 anni di esperienza">10+</div>
+            <div class="l">Anni esperienza</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero card (visible only ≥900px) -->
+      <div class="hero-card" aria-hidden="true">
+        <div class="hero-card-head">
+          <div class="icon">🚨</div>
+          <div>
+            <h3>Hai un guasto elettrico?</h3>
+            <p>Intervento rapido garantito</p>
+          </div>
+        </div>
+        <div class="hero-card-body">
+          <a href="tel:3387326239" class="hero-card-tel" tabindex="-1">📞 338 732 6239</a>
+          <div class="hero-card-features">
+            <div class="hcf"><span class="check">✓</span> Intervento in giornata</div>
+            <div class="hcf"><span class="check">✓</span> Preventivo gratuito</div>
+            <div class="hcf"><span class="check">✓</span> Dichiarazione di conformità inclusa</div>
+            <div class="hcf"><span class="check">✓</span> Zona Rapallo e Riviera di Levante</div>
+          </div>
+          <div class="hero-rating">
+            <div class="stars">★★★★★</div>
+            <div class="info">
+              <strong>5,0 / 5 su Google</strong>
+              <span>83 recensioni verificate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SERVICES ── -->
+  <section class="section section--alt" id="servizi" aria-labelledby="servizi-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag" aria-hidden="true">I nostri servizi</span>
+        <h2 class="section-title" id="servizi-heading">Soluzioni <span>complete</span> per la tua casa</h2>
+        <p class="section-sub">Dalla piccola emergenza al rifacimento completo dell'impianto: un unico interlocutore qualificato e affidabile.</p>
+      </div>
+      <div class="services-grid">
+
+        <article class="service-card urgent">
+          <span class="service-tag">Urgenza</span>
+          <div class="service-icon-wrap" aria-hidden="true">🚨</div>
+          <h3 class="service-title">Intervento di Emergenza</h3>
+          <p class="service-desc">Salvavita che scatta, blackout improvviso, cortocircuiti: interveniamo in tempi rapidi quando ne hai più bisogno.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon-wrap" aria-hidden="true">🔌</div>
+          <h3 class="service-title">Impianti Elettrici Civili</h3>
+          <p class="service-desc">Progettazione e realizzazione di impianti elettrici per abitazioni, con rilascio della dichiarazione di conformità CEI.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon-wrap" aria-hidden="true">🏠</div>
+          <h3 class="service-title">Domotica e Sicurezza</h3>
+          <p class="service-desc">Sistemi di automazione domestica, controllo luci e temperatura, antifurti e videocitofoni integrati.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon-wrap" aria-hidden="true">🪟</div>
+          <h3 class="service-title">Tapparelle Elettriche</h3>
+          <p class="service-desc">Installazione, riparazione e motorizzazione di tapparelle e veneziane. Tapparella bloccata? Risolto in tempi rapidi.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon-wrap" aria-hidden="true">🚪</div>
+          <h3 class="service-title">Cancelli e Automatismi</h3>
+          <p class="service-desc">Automazione per cancelli scorrevoli e basculanti, portoni garage, sistemi di controllo accessi.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon-wrap" aria-hidden="true">🔥</div>
+          <h3 class="service-title">Protezione Caldaia</h3>
+          <p class="service-desc">Installiamo protezioni elettriche dedicate contro i danni da temporale su caldaie ed elettrodomestici.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon-wrap" aria-hidden="true">📋</div>
+          <h3 class="service-title">Dichiarazione di Conformità</h3>
+          <p class="service-desc">Rilascio della certificazione di conformità dell'impianto: obbligatoria per vendite, locazioni e assicurazioni.</p>
+        </article>
+
+        <article class="service-card">
+          <div class="service-icon-wrap" aria-hidden="true">🔄</div>
+          <h3 class="service-title">Rifacimento Impianti</h3>
+          <p class="service-desc">Sostituzione completa di impianti obsoleti o non a norma. Progettazione su misura ed esecuzione impeccabile.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STAT BAND ── -->
+  <div class="stat-band" aria-label="Statistiche aziendali in evidenza">
+    <div class="container">
+      <dl class="stat-band-grid">
+        <div class="stat-item"><dt class="n">5,0★</dt><dd class="l">su Google Reviews</dd></div>
+        <div class="stat-item"><dt class="n">83+</dt><dd class="l">Clienti soddisfatti</dd></div>
+        <div class="stat-item"><dt class="n">10+</dt><dd class="l">Anni di esperienza</dd></div>
+        <div class="stat-item"><dt class="n">100%</dt><dd class="l">Conformità CEI</dd></div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- ── WHY US ── -->
+  <section class="section" id="perche" aria-labelledby="perche-heading">
+    <div class="container">
+      <div class="why-grid">
+        <div>
+          <span class="tag" aria-hidden="true">Perché sceglierci</span>
+          <h2 class="section-title" id="perche-heading" style="margin-bottom:10px;">Un artigiano che fa la <span>differenza</span></h2>
+          <p class="section-sub" style="margin-bottom:28px;">Massone Impianti non è solo un'impresa elettrica: è un partner affidabile che ti segue dall'urgenza alla soluzione definitiva.</p>
+          <div class="why-features">
+            <div class="why-feature">
+              <div class="why-feature-icon" aria-hidden="true">⚡</div>
+              <div class="why-feature-body">
+                <h3>Intervento rapido garantito</h3>
+                <p>Risposta tempestiva per guasti e urgenze. Non aspettare ore in balia di un problema elettrico.</p>
+              </div>
+            </div>
+            <div class="why-feature">
+              <div class="why-feature-icon" aria-hidden="true">🎓</div>
+              <div class="why-feature-body">
+                <h3>Competenza certificata</h3>
+                <p>Impianti eseguiti a regola d'arte con rilascio della documentazione di conformità obbligatoria.</p>
+              </div>
+            </div>
+            <div class="why-feature">
+              <div class="why-feature-icon" aria-hidden="true">💬</div>
+              <div class="why-feature-body">
+                <h3>Trasparenza e chiarezza</h3>
+                <p>Preventivo chiaro prima di ogni intervento. Nessuna sorpresa in fattura.</p>
+              </div>
+            </div>
+            <div class="why-feature">
+              <div class="why-feature-icon" aria-hidden="true">📍</div>
+              <div class="why-feature-body">
+                <h3>Zona di operatività</h3>
+                <p>Basati a Rapallo, serviamo tutta la Riviera di Levante: S. Margherita, Portofino, Chiavari, Recco.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-image-side" aria-label="Valutazione clienti">
+          <div class="big-rating">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <div class="num" aria-label="Valutazione 5 punto 0 su 5">5,0</div>
+            <div class="label">Punteggio medio su 83 recensioni Google</div>
+          </div>
+          <div class="mini-grid">
+            <div class="mini-box"><div class="n">83+</div><div class="l">Clienti soddisfatti</div></div>
+            <div class="mini-box"><div class="n">24/7</div><div class="l">Reperibilità</div></div>
+            <div class="mini-box"><div class="n">100%</div><div class="l">Conformità CEI</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── REVIEWS ── -->
+  <section class="section section--alt" id="recensioni" aria-labelledby="recensioni-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag" aria-hidden="true">Recensioni Google</span>
+        <h2 class="section-title" id="recensioni-heading">Cosa dicono i <span>nostri clienti</span></h2>
+        <p class="section-sub">83 recensioni con punteggio 5,0/5. La fiducia dei clienti è il nostro miglior biglietto da visita.</p>
+      </div>
+      <div class="highlights-row" aria-label="Estratti di recensioni">
+        <div class="hl-box"><p class="hl-quote">"Professionista competente, preciso, preparato, disponibile, puntuale."</p></div>
+        <div class="hl-box"><p class="hl-quote">"Artigiano molto professionale e detto da un ingegnere non è poca cosa."</p></div>
+        <div class="hl-box"><p class="hl-quote">"In più è una bella persona, allegro, positivo e simpatico."</p></div>
+      </div>
+      <div class="reviews-grid">
+
+        <article class="review-card">
+          <div class="review-header">
+            <div class="avatar" style="background:#1b3a6b;" aria-hidden="true">RD</div>
+            <div class="review-meta">
+              <div class="name">Roberto Deligia</div>
+              <div class="date"><time datetime="2025-03">3 mesi fa</time></div>
+            </div>
+          </div>
+          <div class="review-stars" aria-label="5 stelle su 5">★★★★★</div>
+          <p class="review-text">"Un vero professionista, ci siamo conosciuti perché ha rimediato a un problema in una situazione di emergenza e mi ha seguito successivamente per tutto l'impianto della nuova casa. Capace di seguire e consigliare al meglio i clienti più esigenti. Impianti puliti e lineari, veloce e preciso. Consigliatissimo."</p>
+          <div class="review-source"><div class="g-dot" aria-hidden="true"></div><span>Recensione Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-header">
+            <div class="avatar" style="background:#4285f4;" aria-hidden="true">AZ</div>
+            <div class="review-meta">
+              <div class="name">Anita Ziegner</div>
+              <div class="date"><time datetime="2024-08">10 mesi fa</time></div>
+            </div>
+          </div>
+          <div class="review-stars" aria-label="5 stelle su 5">★★★★★</div>
+          <p class="review-text">"Enrico ci ha salvati quando il nostro antico impianto elettrico ha ceduto. Ha raccomandato la sostituzione dell'intero sistema e ci ha permesso di personalizzare ogni dettaglio. È stato un piacere lavorare con lui: le ristrutturazioni non sono mai divertenti, ma lui ha reso un momento difficile un po' più leggero."</p>
+          <div class="review-source"><div class="g-dot" aria-hidden="true"></div><span>Recensione Google</span></div>
+        </article>
+
+        <article class="review-card">
+          <div class="review-header">
+            <div class="avatar" style="background:#27ae60;" aria-hidden="true">MK</div>
+            <div class="review-meta">
+              <div class="name">Marking · Local Guide</div>
+              <div class="date"><time datetime="2024-10">8 mesi fa</time></div>
+            </div>
+          </div>
+          <div class="review-stars" aria-label="5 stelle su 5">★★★★★</div>
+          <p class="review-text">"Ho avuto modo di affidarmi a questo professionista e posso dire che si è dimostrato sempre professionale, preciso ed estremamente competente. Ha saputo seguire ogni fase del lavoro con attenzione, spiegando le soluzioni in modo chiaro e trovando sempre l'opzione migliore. Lo consiglio vivamente."</p>
+          <div class="review-source"><div class="g-dot" aria-hidden="true"></div><span>Recensione Google · Local Guide</span></div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FORM CONTATTO ── -->
+  <section class="section" id="contattaci" aria-labelledby="form-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag" aria-hidden="true">Scrivici</span>
+        <h2 class="section-title" id="form-heading">Richiedi un <span>preventivo gratuito</span></h2>
+        <p class="section-sub">Compila il modulo e ti richiamiamo noi, oppure chiama direttamente al <a href="tel:3387326239" style="color:var(--navy);font-weight:700;">338 732 6239</a>.</p>
+      </div>
+
+      <form id="contact-form" novalidate aria-label="Modulo di contatto" style="max-width:680px;">
+        <noscript>
+          <p style="background:#fdecea;border:1px solid #ef9a9a;padding:14px;border-radius:8px;margin-bottom:16px;color:#b71c1c;">
+            JavaScript è disabilitato. Per contattarci chiama direttamente al <a href="tel:3387326239">338 732 6239</a>.
+          </p>
+        </noscript>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="nome">Nome e cognome <span class="req" aria-hidden="true">*</span></label>
+            <input
+              type="text" id="nome" name="nome"
+              class="form-control"
+              required aria-required="true"
+              aria-describedby="nome-err"
+              autocomplete="name"
+              placeholder="Mario Rossi"
+            />
+            <span id="nome-err" class="field-error" role="alert" aria-live="polite">⚠ Inserisci il tuo nome e cognome.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="telefono">Telefono <span class="req" aria-hidden="true">*</span></label>
+            <input
+              type="tel" id="telefono" name="telefono"
+              class="form-control"
+              required aria-required="true"
+              aria-describedby="tel-err"
+              autocomplete="tel"
+              placeholder="+39 333 000 0000"
+            />
+            <span id="tel-err" class="field-error" role="alert" aria-live="polite">⚠ Inserisci un numero di telefono valido.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input
+              type="email" id="email" name="email"
+              class="form-control"
+              required aria-required="true"
+              aria-describedby="email-err"
+              autocomplete="email"
+              placeholder="mario@esempio.it"
+            />
+            <span id="email-err" class="field-error" role="alert" aria-live="polite">⚠ Inserisci un indirizzo email valido.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="servizio">Tipo di intervento</label>
+            <select id="servizio" name="servizio" class="form-control" autocomplete="off">
+              <option value="">-- Seleziona (facoltativo) --</option>
+              <option value="Emergenza / Guasto">Emergenza / Guasto</option>
+              <option value="Impianto elettrico">Impianto elettrico</option>
+              <option value="Domotica">Domotica</option>
+              <option value="Tapparelle elettriche">Tapparelle elettriche</option>
+              <option value="Cancelli automatici">Cancelli automatici</option>
+              <option value="Dichiarazione di conformità">Dichiarazione di conformità</option>
+              <option value="Altro">Altro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top:16px;">
+          <label for="messaggio">Messaggio <span class="req" aria-hidden="true">*</span></label>
+          <textarea
+            id="messaggio" name="messaggio"
+            class="form-control"
+            required aria-required="true"
+            aria-describedby="msg-err"
+            placeholder="Descrivi brevemente il tuo problema o la tua richiesta…"
+          ></textarea>
+          <span id="msg-err" class="field-error" role="alert" aria-live="polite">⚠ Scrivi un messaggio.</span>
+        </div>
+
+        <div class="form-check" style="margin-top:16px;">
+          <input
+            type="checkbox" id="privacy-check" name="privacy"
+            required aria-required="true"
+            aria-describedby="priv-err"
+          />
+          <label for="privacy-check">
+            Ho letto e accetto la
+            <button type="button" class="link-btn" id="open-privacy-btn" aria-haspopup="dialog">Informativa sulla Privacy</button>
+            ai sensi dell'art. 13 GDPR (Reg. UE 2016/679).
+            Il trattamento dei dati ha la finalità di rispondere alla mia richiesta. <span class="req" aria-hidden="true">*</span>
+          </label>
+        </div>
+        <span id="priv-err" class="field-error" role="alert" aria-live="polite" style="margin-top:6px;">⚠ Devi accettare la privacy per inviare il modulo.</span>
+
+        <div id="form-status" role="alert" aria-live="assertive" style="margin-top:16px;"></div>
+
+        <button type="submit" class="btn btn-navy btn-big" style="margin-top:20px;width:100%;">
+          Invia richiesta →
+        </button>
+
+        <p style="font-size:.78rem;color:var(--muted);margin-top:12px;">
+          I campi contrassegnati con <span style="color:var(--red);">*</span> sono obbligatori.
+          I dati inviati saranno utilizzati esclusivamente per rispondere alla tua richiesta.
+        </p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section" aria-labelledby="cta-heading">
+    <div class="container">
+      <h2 id="cta-heading">Hai un problema elettrico? <span>Chiamaci ora.</span></h2>
+      <p>Intervento rapido su Rapallo e tutta la Riviera di Levante. Non aspettare.</p>
+      <div class="cta-actions">
+        <a href="tel:3387326239" class="btn btn-white btn-big" aria-label="Chiama Massone Impianti al 338 732 6239">
+          📞 338 732 6239 – Chiama ora
+        </a>
+        <a href="#contattaci" class="btn btn-ghost btn-big">Scrivici</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTATTI + MAPPA ── -->
+  <section class="section section--alt" id="dove-siamo" aria-labelledby="contatti-heading">
+    <div class="container">
+      <div class="section-header">
+        <span class="tag" aria-hidden="true">Contatti e sede</span>
+        <h2 class="section-title" id="contatti-heading">Siamo a <span>Rapallo</span>, serviamo tutta la riviera</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="area-map">
+          <!-- La mappa carica solo dopo il consenso cookie -->
+          <div id="map-container" style="width:100%;height:100%;">
+            <div class="map-placeholder">
+              <span style="font-size:2rem;" aria-hidden="true">🗺️</span>
+              <p>La mappa è disponibile dopo aver accettato i cookie tecnici.<br/>
+                <a href="https://www.openstreetmap.org/?mlat=44.354&mlon=9.208#map=15/44.354/9.208" target="_blank" rel="noopener noreferrer" style="color:var(--navy);font-weight:700;text-decoration:underline;">
+                  Apri in OpenStreetMap <span aria-label="(si apre in una nuova scheda)">↗</span>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="contact-info">
+          <div class="c-item">
+            <div class="c-icon" aria-hidden="true">📍</div>
+            <div class="c-body">
+              <h3>Indirizzo</h3>
+              <p>Via Del Boschetto, 11<br/>16035 Rapallo (GE)<br/>Città Metropolitana di Genova</p>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon" aria-hidden="true">📞</div>
+            <div class="c-body">
+              <h3>Telefono</h3>
+              <a href="tel:3387326239" aria-label="Chiama al 338 732 6239">338 732 6239</a>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon" aria-hidden="true">🕐</div>
+            <div class="c-body">
+              <h3>Orari di apertura</h3>
+              <p>Lun – Sab: 8:00 – 19:00<br/>Reperibilità per urgenze</p>
+            </div>
+          </div>
+          <div class="c-item">
+            <div class="c-icon" aria-hidden="true">🗺️</div>
+            <div class="c-body">
+              <h3>Zone servite</h3>
+              <p>Rapallo · Santa Margherita Ligure · Portofino · Recco · Chiavari · Camogli · Sestri Levante</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-brand">
+      <div class="footer-logo">⚡ Massone<span>Impianti</span></div>
+      <p class="footer-desc">Soluzioni tecnologiche per impianti elettrici, domotica, tapparelle e cancelli automatici. Intervento rapido a Rapallo e Riviera di Levante.</p>
+      <span class="footer-cert">✓ Impianti a norma CEI · Dichiarazione di conformità</span>
+    </div>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h4>Servizi</h4>
+        <ul>
+          <li><a href="#servizi">Guasti di emergenza</a></li>
+          <li><a href="#servizi">Impianti elettrici</a></li>
+          <li><a href="#servizi">Domotica</a></li>
+          <li><a href="#servizi">Tapparelle elettriche</a></li>
+          <li><a href="#servizi">Cancelli automatici</a></li>
+          <li><a href="#servizi">Dichiarazione di conformità</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contatti</h4>
+        <ul>
+          <li><a href="tel:3387326239">📞 338 732 6239</a></li>
+          <li><a href="#dove-siamo">📍 Via Del Boschetto 11, Rapallo</a></li>
+          <li><a href="#recensioni">⭐ 5,0 su Google (83 rec.)</a></li>
+          <li><a href="#contattaci">✉ Scrivici</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Informazioni legali</h4>
+        <ul>
+          <li><button type="button" class="link-btn" id="open-privacy-footer" style="color:rgba(255,255,255,.55);font-weight:500;text-decoration:none;" onmouseover="this.style.color='var(--gold2)'" onmouseout="this.style.color='rgba(255,255,255,.55)'">Informativa Privacy</button></li>
+          <li><button type="button" class="link-btn" id="open-cookie-footer" style="color:rgba(255,255,255,.55);font-weight:500;text-decoration:none;" onmouseover="this.style.color='var(--gold2)'" onmouseout="this.style.color='rgba(255,255,255,.55)'">Cookie Policy</button></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <p>© 2025 Massone Impianti – Soluzioni Tecnologiche. Tutti i diritti riservati.<br/>
+         Titolare: Enrico Massone · Via Del Boschetto 11, 16035 Rapallo (GE) · P.IVA: [P.IVA]</p>
+      <div class="footer-legal-links">
+        <button type="button" id="open-privacy-footer2" aria-haspopup="dialog">Informativa Privacy</button>
+        <button type="button" id="open-cookie-footer2" aria-haspopup="dialog">Cookie Policy</button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ── SCROLL TOP ── -->
+<button id="scrollTop" aria-label="Torna all'inizio della pagina">↑</button>
+
+<!-- ── COOKIE BANNER ── -->
+<div
+  id="cookie-banner"
+  class="hidden"
+  role="region"
+  aria-label="Consenso cookie"
+  aria-live="polite"
+>
+  <div class="cookie-inner">
+    <p class="cookie-text">
+      Questo sito utilizza solo cookie tecnici necessari al funzionamento. La mappa OpenStreetMap può caricare risorse da server esterni. Consulta la nostra
+      <button type="button" id="open-cookie-from-banner" aria-haspopup="dialog">Cookie Policy</button>.
+    </p>
+    <div class="cookie-btns">
+      <button type="button" class="btn btn-gold" id="cookie-accept-all">Accetta</button>
+      <button type="button" class="btn btn-outline-navy" id="cookie-accept-necessary" style="background:rgba(255,255,255,.1);color:var(--white);border-color:rgba(255,255,255,.35);">Solo necessari</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRIVACY MODAL ── -->
+<div
+  id="privacy-overlay"
+  class="hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="privacy-modal-title"
+>
+  <div id="privacy-modal">
+    <div class="modal-header">
+      <h2 id="privacy-modal-title">Informativa sulla Privacy</h2>
+      <button class="modal-close" id="close-privacy" aria-label="Chiudi informativa privacy">✕</button>
+    </div>
+
+    <p>Ai sensi dell'art. 13 del Regolamento UE 2016/679 (GDPR) e del D.Lgs. 196/2003 come modificato dal D.Lgs. 101/2018, Le forniamo le seguenti informazioni sul trattamento dei Suoi dati personali.</p>
+
+    <h3>Titolare del trattamento</h3>
+    <p>Enrico Massone – Massone Impianti<br/>Via Del Boschetto 11, 16035 Rapallo (GE)<br/>P.IVA: [P.IVA] · Tel: 338 732 6239</p>
+
+    <h3>Finalità e base giuridica</h3>
+    <p>I dati raccolti tramite il modulo di contatto (nome, email, telefono, messaggio) sono trattati esclusivamente per rispondere alle richieste di preventivo o informazioni. Base giuridica: consenso dell'interessato (art. 6, par. 1, lett. a) GDPR).</p>
+
+    <h3>Modalità di trattamento</h3>
+    <p>I dati vengono trasmessi tramite client email e non sono registrati su server propri. Il trattamento avviene in forma elettronica e cartacea con misure di sicurezza adeguate.</p>
+
+    <h3>Conservazione</h3>
+    <p>I dati sono conservati per il tempo strettamente necessario a evadere la richiesta e, successivamente, per un massimo di 24 mesi per eventuali obblighi fiscali o legali.</p>
+
+    <h3>Comunicazione a terzi</h3>
+    <p>I dati non sono ceduti a terzi, né trasferiti fuori dall'UE, salvo obblighi di legge.</p>
+
+    <h3>Diritti dell'interessato</h3>
+    <p>Ha diritto di accesso, rettifica, cancellazione ("diritto all'oblio"), limitazione del trattamento, portabilità dei dati e opposizione al trattamento (artt. 15–22 GDPR). Per esercitare i Suoi diritti scriva a: <strong>338 732 6239</strong> o all'indirizzo del Titolare. Ha altresì il diritto di proporre reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer" style="color:var(--navy);">garanteprivacy.it</a>).</p>
+
+    <h3>Cookie e tecnologie di tracciamento</h3>
+    <p>Questo sito non utilizza cookie di profilazione propri. La mappa integrata (OpenStreetMap) può caricare risorse da server terzi soggetti alle proprie policy. Consulta la Cookie Policy per i dettagli.</p>
+
+    <button type="button" class="btn btn-navy" id="close-privacy-bottom" style="margin-top:24px;width:100%;">Ho capito – Chiudi</button>
+  </div>
+</div>
+
+<!-- ── COOKIE MODAL (semplificata) ── -->
+<div
+  id="cookie-overlay"
+  class="hidden"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cookie-modal-title"
+>
+  <div id="privacy-modal">
+    <div class="modal-header">
+      <h2 id="cookie-modal-title">Cookie Policy</h2>
+      <button class="modal-close" id="close-cookie" aria-label="Chiudi cookie policy">✕</button>
+    </div>
+    <p>Questo sito utilizza esclusivamente cookie tecnici necessari al corretto funzionamento (es. salvataggio delle preferenze cookie). Non utilizziamo cookie di profilazione o analitici propri.</p>
+
+    <h3>Cookie tecnici (necessari)</h3>
+    <p><strong>cookie_consent</strong>: memorizza la scelta dell'utente riguardo ai cookie. Conservato in <code>localStorage</code>. Scadenza: nessuna (fino a cancellazione manuale). Nessuna trasmissione a terzi.</p>
+
+    <h3>Servizi di terze parti</h3>
+    <p><strong>OpenStreetMap</strong> (caricato solo con consenso "Accetta"): può impostare cookie propri soggetti alla <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer" style="color:var(--navy);">Privacy Policy di OpenStreetMap Foundation</a>.</p>
+
+    <h3>Google Fonts</h3>
+    <p>Il font "Inter" è caricato da Google Fonts. Google può raccogliere dati tecnici (IP anonimizzato). Per maggiori info: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color:var(--navy);">Google Privacy Policy</a>.</p>
+
+    <h3>Come gestire i cookie</h3>
+    <p>Puoi modificare le preferenze in qualsiasi momento tramite le impostazioni del tuo browser o contattandoci al 338 732 6239.</p>
+
+    <button type="button" class="btn btn-navy" id="close-cookie-bottom" style="margin-top:24px;width:100%;">Chiudi</button>
+  </div>
+</div>
+
+<script>
+'use strict';
+
+/* ── NAVBAR SCROLL ── */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  document.getElementById('scrollTop').classList.toggle('show', window.scrollY > 400);
+}, { passive: true });
+
+/* ── SCROLL TOP ── */
+document.getElementById('scrollTop').addEventListener('click', () =>
+  window.scrollTo({ top: 0, behavior: 'smooth' })
+);
+
+/* ── HAMBURGER MENU ── */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobile-menu');
+hamburger.addEventListener('click', () => {
+  const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+  hamburger.setAttribute('aria-expanded', String(!expanded));
+  mobileMenu.classList.toggle('open');
+});
+mobileMenu.querySelectorAll('a').forEach(link =>
+  link.addEventListener('click', () => {
+    hamburger.setAttribute('aria-expanded', 'false');
+    mobileMenu.classList.remove('open');
+  })
+);
+
+/* ── SMOOTH ANCHOR SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+/* ── CONTACT FORM (mailto precompilato) ── */
+const form = document.getElementById('contact-form');
+
+function showErr(id, show) {
+  const el = document.getElementById(id);
+  el.classList.toggle('visible', show);
+  const input = document.querySelector('[aria-describedby="' + id + '"]');
+  if (input) input.classList.toggle('invalid', show);
+}
+
+function validateEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+function validateTel(v)   { return v.replace(/[\s\-().+]/g, '').length >= 6; }
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const nome     = document.getElementById('nome').value.trim();
+  const tel      = document.getElementById('telefono').value.trim();
+  const email    = document.getElementById('email').value.trim();
+  const servizio = document.getElementById('servizio').value;
+  const msg      = document.getElementById('messaggio').value.trim();
+  const privacy  = document.getElementById('privacy-check').checked;
+  const status   = document.getElementById('form-status');
+
+  let valid = true;
+
+  showErr('nome-err',  !nome);          if (!nome)             valid = false;
+  showErr('tel-err',   !validateTel(tel)); if (!validateTel(tel)) valid = false;
+  showErr('email-err', !validateEmail(email)); if (!validateEmail(email)) valid = false;
+  showErr('msg-err',   !msg);           if (!msg)              valid = false;
+  showErr('priv-err',  !privacy);       if (!privacy)          valid = false;
+
+  if (!valid) {
+    status.className = 'error';
+    status.style.display = 'block';
+    status.textContent = '⚠ Correggi i campi evidenziati prima di inviare.';
+    // focus sul primo campo invalido
+    const firstInvalid = form.querySelector('.invalid, [aria-describedby]:invalid');
+    if (firstInvalid) firstInvalid.focus();
+    return;
+  }
+
+  const subject = 'Richiesta di contatto da ' + nome + (servizio ? ' – ' + servizio : '');
+  const body =
+    'Nome: ' + nome + '\n' +
+    'Telefono: ' + tel + '\n' +
+    'Email: ' + email + '\n' +
+    (servizio ? 'Servizio richiesto: ' + servizio + '\n' : '') +
+    '\nMessaggio:\n' + msg + '\n\n' +
+    '---\nInviato tramite il sito Massone Impianti';
+
+  // SOSTITUIRE con l'email reale del cliente:
+  const destinatario = '[EMAIL@MASSONEIMPIANTI.IT]';
+
+  window.location.href =
+    'mailto:' + destinatario +
+    '?subject=' + encodeURIComponent(subject) +
+    '&body='    + encodeURIComponent(body);
+
+  status.className = 'success';
+  status.style.display = 'block';
+  status.textContent = '✓ Apertura del client email in corso… Se non si apre automaticamente, chiama il 338 732 6239.';
+  form.reset();
+  document.getElementById('privacy-check').checked = false;
+});
+
+/* ── COOKIE CONSENT ── */
+const CONSENT_KEY = 'mi_cookie_consent';
+
+function loadMap() {
+  const container = document.getElementById('map-container');
+  container.innerHTML =
+    '<iframe ' +
+      'title="Mappa – Massone Impianti, Via Del Boschetto 11, Rapallo" ' +
+      'aria-label="Mappa interattiva della sede di Massone Impianti a Rapallo" ' +
+      'src="https://www.openstreetmap.org/export/embed.html?bbox=9.19,44.34,9.24,44.37&layer=mapnik&marker=44.354,9.208" ' +
+      'allowfullscreen loading="lazy">' +
+    '</iframe>';
+}
+
+function hideBanner() {
+  document.getElementById('cookie-banner').classList.add('hidden');
+  document.getElementById('scrollTop').style.bottom = '28px';
+}
+
+function showBanner() {
+  const banner = document.getElementById('cookie-banner');
+  banner.classList.remove('hidden');
+  document.getElementById('scrollTop').style.bottom = '80px';
+}
+
+// Inizializza in base a preferenza salvata
+(function initConsent() {
+  const saved = localStorage.getItem(CONSENT_KEY);
+  if (saved === 'all')       { loadMap(); return; }
+  if (saved === 'necessary') { return; }
+  // Nessuna preferenza: mostra banner
+  showBanner();
+})();
+
+document.getElementById('cookie-accept-all').addEventListener('click', () => {
+  localStorage.setItem(CONSENT_KEY, 'all');
+  hideBanner();
+  loadMap();
+});
+document.getElementById('cookie-accept-necessary').addEventListener('click', () => {
+  localStorage.setItem(CONSENT_KEY, 'necessary');
+  hideBanner();
+});
+
+/* ── PRIVACY MODAL ── */
+const privacyOverlay = document.getElementById('privacy-overlay');
+const firstPrivacyFocusable = document.getElementById('close-privacy');
+
+function openPrivacy() {
+  privacyOverlay.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  firstPrivacyFocusable.focus();
+}
+function closePrivacy() {
+  privacyOverlay.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+['open-privacy-btn','open-privacy-footer','open-privacy-footer2'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', openPrivacy);
+});
+document.getElementById('close-privacy').addEventListener('click', closePrivacy);
+document.getElementById('close-privacy-bottom').addEventListener('click', closePrivacy);
+privacyOverlay.addEventListener('click', e => { if (e.target === privacyOverlay) closePrivacy(); });
+
+/* ── COOKIE MODAL ── */
+const cookieOverlay = document.getElementById('cookie-overlay');
+
+function openCookie() {
+  cookieOverlay.classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('close-cookie').focus();
+}
+function closeCookie() {
+  cookieOverlay.classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+['open-cookie-footer','open-cookie-footer2','open-cookie-from-banner'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('click', openCookie);
+});
+document.getElementById('close-cookie').addEventListener('click', closeCookie);
+document.getElementById('close-cookie-bottom').addEventListener('click', closeCookie);
+cookieOverlay.addEventListener('click', e => { if (e.target === cookieOverlay) closeCookie(); });
+
+/* ── CHIUSURA MODAL CON ESC ── */
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    if (!privacyOverlay.classList.contains('hidden')) closePrivacy();
+    if (!cookieOverlay.classList.contains('hidden'))  closeCookie();
+  }
+});
+</script>
+</body>
+</html>
