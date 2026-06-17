@@ -544,9 +544,81 @@
     #cookie-banner.hidden { display: none; }
     .cookie-inner { max-width: 1140px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
     .cookie-text { font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.85); }
-    .cookie-text button { background: none; border: none; padding: 0; color: var(--gold2); font-family: inherit; font-size: inherit; text-decoration: underline; cursor: pointer; }
-    .cookie-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cookie-btns { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
     .cookie-btns .btn { min-height: 40px; padding: 8px 18px; font-size: .85rem; }
+    /* Pulsanti banner pari peso visivo (Garante 2022) */
+    .btn-outline-white {
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,.6);
+    }
+    .btn-outline-white:hover { background: rgba(255,255,255,.12); border-color: var(--white); }
+    .cookie-personalizza {
+      background: none; border: none; padding: 2px 0;
+      color: rgba(255,255,255,.6); font-family: inherit; font-size: .8rem;
+      text-decoration: underline; cursor: pointer; align-self: center;
+    }
+    .cookie-personalizza:hover { color: var(--white); }
+
+    /* ─── COOKIE SETTINGS BUTTON (🍪 persistente) ───────────────── */
+    #cookie-settings-btn {
+      position: fixed; left: 72px; bottom: 90px; z-index: 400;
+      width: 48px; height: 48px;
+      background: var(--navy); color: var(--white);
+      border: none; border-radius: 50%; cursor: pointer;
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(27,58,107,.45);
+      transition: background .2s, transform .2s;
+    }
+    #cookie-settings-btn:hover { background: var(--navy2); transform: scale(1.08); }
+    #cookie-dot {
+      position: absolute; top: 1px; right: 1px;
+      width: 12px; height: 12px;
+      background: var(--gold); border-radius: 50%;
+      border: 2px solid var(--white);
+      transition: background .3s;
+    }
+
+    /* ─── COOKIE PREFS PANEL ─────────────────────────────────────── */
+    #cookie-prefs-panel {
+      position: fixed; left: 16px; bottom: 150px; z-index: 400;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px; width: 268px;
+      box-shadow: var(--shadow2);
+    }
+    #cookie-prefs-panel.hidden { display: none; }
+
+    /* ─── CONSENT ITEMS (panel + modal) ─────────────────────────── */
+    .consent-item {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px; padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .consent-item:last-of-type { border-bottom: none; padding-bottom: 0; }
+    .consent-item-info { flex: 1; min-width: 0; }
+    .consent-item-name { font-weight: 700; color: var(--text); font-size: .84rem; display: block; }
+    .consent-item-desc { color: var(--muted); font-size: .75rem; display: block; margin-top: 1px; }
+    .consent-badge {
+      font-size: .7rem; font-weight: 700; white-space: nowrap;
+      padding: 3px 9px; border-radius: 99px; flex-shrink: 0;
+    }
+    .consent-badge.always { background: rgba(27,58,107,.1); color: var(--navy); }
+    .consent-toggle-btn {
+      min-width: 50px; min-height: 28px; padding: 3px 8px;
+      border: 1.5px solid var(--border); border-radius: 99px;
+      font-family: inherit; font-size: .75rem; font-weight: 700;
+      cursor: pointer; transition: all .2s; flex-shrink: 0;
+      background: var(--light); color: var(--muted);
+    }
+    .consent-toggle-btn[aria-pressed="true"] {
+      background: #27ae60; color: var(--white); border-color: #27ae60;
+    }
+    .consent-actions {
+      display: flex; gap: 8px; margin-top: 14px; flex-wrap: wrap;
+    }
+    .consent-actions .btn { flex: 1; min-height: 36px; padding: 6px 10px; font-size: .82rem; }
+    .consent-save-row { margin-top: 8px; }
+    .consent-save-row .btn { width: 100%; min-height: 36px; font-size: .82rem; }
 
     /* ─── PRIVACY MODAL ──────────────────────────────────────────── */
     #privacy-overlay {
@@ -742,10 +814,12 @@
       .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
       .area-map { margin-bottom: 0; }
 
-      /* Scroll top + a11y widget on desktop */
-      #scrollTop        { bottom: 28px; right: 28px; }
-      #a11y-widget-btn  { bottom: 28px; left: 28px; }
-      #a11y-panel       { bottom: 88px; left: 28px; }
+      /* Fixed buttons desktop */
+      #scrollTop           { bottom: 28px; right: 28px; }
+      #a11y-widget-btn     { bottom: 28px; left: 28px; }
+      #a11y-panel          { bottom: 88px; left: 28px; }
+      #cookie-settings-btn { bottom: 28px; left: 84px; }
+      #cookie-prefs-panel  { bottom: 88px; left: 28px; }
     }
   </style>
 </head>
@@ -1352,6 +1426,52 @@
   </div>
 </div>
 
+<!-- ── COOKIE SETTINGS BUTTON (🍪 persistente) ── -->
+<button
+  id="cookie-settings-btn"
+  aria-label="Gestisci preferenze cookie"
+  aria-expanded="false"
+  aria-controls="cookie-prefs-panel"
+  title="Preferenze cookie"
+  style="position:relative;"
+>
+  <span aria-hidden="true">🍪</span>
+  <span id="cookie-dot" aria-hidden="true"></span>
+</button>
+
+<div
+  id="cookie-prefs-panel"
+  class="hidden"
+  role="region"
+  aria-label="Gestione preferenze cookie"
+>
+  <div class="a11y-title">Preferenze Cookie</div>
+
+  <div class="consent-item">
+    <div class="consent-item-info">
+      <span class="consent-item-name">Cookie tecnici</span>
+      <span class="consent-item-desc">Necessari al funzionamento del sito</span>
+    </div>
+    <span class="consent-badge always">Sempre attivi</span>
+  </div>
+
+  <div class="consent-item">
+    <div class="consent-item-info">
+      <span class="consent-item-name">Mappa (OpenStreetMap)</span>
+      <span class="consent-item-desc">Carica risorse da server terzi</span>
+    </div>
+    <button class="consent-toggle-btn" id="osm-toggle-panel" aria-pressed="false" aria-label="Abilita mappa OpenStreetMap">OFF</button>
+  </div>
+
+  <div class="consent-actions">
+    <button type="button" class="btn btn-navy"        id="prefs-accept-all">Accetta tutti</button>
+    <button type="button" class="btn btn-outline-navy" id="prefs-reject-all">Rifiuta tutti</button>
+  </div>
+  <div class="consent-save-row">
+    <button type="button" class="btn btn-gold" id="prefs-save">Salva preferenze</button>
+  </div>
+</div>
+
 <!-- ── COOKIE BANNER ── -->
 <div
   id="cookie-banner"
@@ -1361,13 +1481,14 @@
   aria-live="polite"
 >
   <div class="cookie-inner">
-    <p class="cookie-text">
-      Questo sito utilizza solo cookie tecnici necessari al funzionamento. La mappa OpenStreetMap può caricare risorse da server esterni. Consulta la nostra
-      <button type="button" id="open-cookie-from-banner" aria-haspopup="dialog">Cookie Policy</button>.
-    </p>
+    <div class="cookie-text">
+      <strong style="color:var(--white);display:block;margin-bottom:4px;">Informativa sui Cookie</strong>
+      Utilizziamo cookie tecnici necessari al funzionamento. La mappa (OpenStreetMap) e il carattere tipografico (Google Fonts) caricano risorse da server di terze parti.
+    </div>
     <div class="cookie-btns">
-      <button type="button" class="btn btn-gold" id="cookie-accept-all">Accetta</button>
-      <button type="button" class="btn btn-outline-navy" id="cookie-accept-necessary" style="background:rgba(255,255,255,.1);color:var(--white);border-color:rgba(255,255,255,.35);">Solo necessari</button>
+      <button type="button" class="btn btn-gold"          id="cookie-accept-all">Accetta tutti</button>
+      <button type="button" class="btn btn-outline-white" id="cookie-accept-necessary">Rifiuta tutti</button>
+      <button type="button" class="cookie-personalizza"   id="open-cookie-from-banner" aria-haspopup="dialog">Personalizza</button>
     </div>
   </div>
 </div>
@@ -1423,22 +1544,45 @@
 >
   <div id="cookie-modal">
     <div class="modal-header">
-      <h2 id="cookie-modal-title">Cookie Policy</h2>
-      <button class="modal-close" id="close-cookie" aria-label="Chiudi cookie policy">✕</button>
+      <h2 id="cookie-modal-title">Cookie Policy e Preferenze</h2>
+      <button class="modal-close" id="close-cookie" aria-label="Chiudi">✕</button>
     </div>
-    <p>Questo sito utilizza esclusivamente cookie tecnici necessari al corretto funzionamento (es. salvataggio delle preferenze cookie). Non utilizziamo cookie di profilazione o analitici propri.</p>
+
+    <!-- Gestione consensi (GDPR art. 7) -->
+    <div style="background:var(--light);border-radius:10px;padding:14px 16px;margin-bottom:20px;">
+      <strong style="font-size:.84rem;color:var(--navy);display:block;margin-bottom:10px;text-transform:uppercase;letter-spacing:.06em;">Gestisci le tue preferenze</strong>
+      <div class="consent-item">
+        <div class="consent-item-info">
+          <span class="consent-item-name">Cookie tecnici necessari</span>
+          <span class="consent-item-desc">Salvataggio preferenze (localStorage). Sempre attivi.</span>
+        </div>
+        <span class="consent-badge always">Sempre attivi</span>
+      </div>
+      <div class="consent-item">
+        <div class="consent-item-info">
+          <span class="consent-item-name">Mappa OpenStreetMap</span>
+          <span class="consent-item-desc">Iframe da server OSM Foundation. Può impostare cookie propri.</span>
+        </div>
+        <button class="consent-toggle-btn" id="osm-toggle-modal" aria-pressed="false" aria-label="Abilita mappa OpenStreetMap">OFF</button>
+      </div>
+      <div class="consent-actions">
+        <button type="button" class="btn btn-navy"        id="modal-accept-all">Accetta tutti</button>
+        <button type="button" class="btn btn-outline-navy" id="modal-reject-all">Rifiuta tutti</button>
+      </div>
+      <div class="consent-save-row">
+        <button type="button" class="btn btn-gold" id="modal-save">Salva preferenze</button>
+      </div>
+    </div>
 
     <h3>Cookie tecnici (necessari)</h3>
     <p><strong>cookie_consent</strong>: memorizza la scelta dell'utente riguardo ai cookie. Conservato in <code>localStorage</code>. Scadenza: nessuna (fino a cancellazione manuale). Nessuna trasmissione a terzi.</p>
 
     <h3>Servizi di terze parti</h3>
-    <p><strong>OpenStreetMap</strong> (caricato solo con consenso "Accetta"): può impostare cookie propri soggetti alla <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer" style="color:var(--navy);">Privacy Policy di OpenStreetMap Foundation</a>.</p>
+    <p><strong>OpenStreetMap</strong> (caricato solo con consenso): può impostare cookie propri soggetti alla <a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer" style="color:var(--navy);">Privacy Policy di OpenStreetMap Foundation</a>.</p>
+    <p style="margin-top:8px;"><strong>Google Fonts</strong>: carica il font "Inter" da server Google (base giuridica: legittimo interesse per la corretta resa grafica del sito). Per info: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color:var(--navy);">Google Privacy Policy</a>.</p>
 
-    <h3>Google Fonts</h3>
-    <p>Il font "Inter" è caricato da Google Fonts. Google può raccogliere dati tecnici (IP anonimizzato). Per maggiori info: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" style="color:var(--navy);">Google Privacy Policy</a>.</p>
-
-    <h3>Come gestire i cookie</h3>
-    <p>Puoi modificare le preferenze in qualsiasi momento tramite le impostazioni del tuo browser o contattandoci al 338 732 6239.</p>
+    <h3>Come revocare il consenso</h3>
+    <p>Puoi modificare o revocare le preferenze in qualsiasi momento tramite il pulsante 🍪 in basso a sinistra oppure contattandoci al 338 732 6239.</p>
 
     <button type="button" class="btn btn-navy" id="close-cookie-bottom" style="margin-top:24px;width:100%;">Chiudi</button>
   </div>
@@ -1550,12 +1694,23 @@ form.addEventListener('submit', function(e) {
   document.getElementById('privacy-check').checked = false;
 });
 
-/* ── COOKIE CONSENT ── */
+/* ── COOKIE CONSENT (GDPR / Garante Privacy 2022) ── */
 const CONSENT_KEY = 'mi_cookie_consent';
 
+const MAP_PLACEHOLDER =
+  '<div class="map-placeholder">' +
+    '<span style="font-size:2rem;" aria-hidden="true">🗺️</span>' +
+    '<p>La mappa è disponibile dopo aver accettato i cookie di terze parti.<br/>' +
+      '<a href="https://www.openstreetmap.org/?mlat=44.354&mlon=9.208#map=15/44.354/9.208" ' +
+         'target="_blank" rel="noopener noreferrer" ' +
+         'style="color:var(--navy);font-weight:700;text-decoration:underline;">' +
+        'Apri in OpenStreetMap ↗' +
+      '</a>' +
+    '</p>' +
+  '</div>';
+
 function loadMap() {
-  const container = document.getElementById('map-container');
-  container.innerHTML =
+  document.getElementById('map-container').innerHTML =
     '<iframe ' +
       'title="Mappa – Massone Impianti, Via Del Boschetto 11, Rapallo" ' +
       'aria-label="Mappa interattiva della sede di Massone Impianti a Rapallo" ' +
@@ -1564,37 +1719,103 @@ function loadMap() {
     '</iframe>';
 }
 
+function unloadMap() {
+  document.getElementById('map-container').innerHTML = MAP_PLACEHOLDER;
+}
+
+function updateCookieDot() {
+  const dot = document.getElementById('cookie-dot');
+  if (!dot) return;
+  dot.style.background = localStorage.getItem(CONSENT_KEY) === 'all' ? '#27ae60' : '#d4820a';
+}
+
+function syncOsmToggles(isAll) {
+  ['osm-toggle-panel','osm-toggle-modal'].forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.setAttribute('aria-pressed', isAll ? 'true' : 'false');
+    el.textContent = isAll ? 'ON' : 'OFF';
+  });
+}
+
+function applyConsent(value) {
+  localStorage.setItem(CONSENT_KEY, value);
+  updateCookieDot();
+  syncOsmToggles(value === 'all');
+  if (value === 'all') loadMap(); else unloadMap();
+}
+
 function hideBanner() {
   document.getElementById('cookie-banner').classList.add('hidden');
-  document.getElementById('scrollTop').style.bottom = '';
-  document.getElementById('a11y-widget-btn').style.bottom = '';
-  document.getElementById('a11y-panel').style.bottom = '';
+  ['scrollTop','a11y-widget-btn','a11y-panel','cookie-settings-btn','cookie-prefs-panel']
+    .forEach(id => { document.getElementById(id).style.bottom = ''; });
 }
 
 function showBanner() {
   document.getElementById('cookie-banner').classList.remove('hidden');
-  document.getElementById('scrollTop').style.bottom = '80px';
-  document.getElementById('a11y-widget-btn').style.bottom = '90px';
-  document.getElementById('a11y-panel').style.bottom = '150px';
+  document.getElementById('scrollTop').style.bottom           = '80px';
+  document.getElementById('a11y-widget-btn').style.bottom     = '90px';
+  document.getElementById('a11y-panel').style.bottom          = '150px';
+  document.getElementById('cookie-settings-btn').style.bottom = '90px';
+  document.getElementById('cookie-prefs-panel').style.bottom  = '150px';
 }
 
-// Inizializza in base a preferenza salvata
 (function initConsent() {
   const saved = localStorage.getItem(CONSENT_KEY);
-  if (saved === 'all')       { loadMap(); return; }
-  if (saved === 'necessary') { return; }
-  // Nessuna preferenza: mostra banner
-  showBanner();
+  if (saved === 'all')       { loadMap(); syncOsmToggles(true);  }
+  else if (saved === 'necessary') { syncOsmToggles(false); }
+  else                       { syncOsmToggles(false); showBanner(); }
+  updateCookieDot();
 })();
 
-document.getElementById('cookie-accept-all').addEventListener('click', () => {
-  localStorage.setItem(CONSENT_KEY, 'all');
-  hideBanner();
-  loadMap();
+document.getElementById('cookie-accept-all').addEventListener('click', () => { applyConsent('all');       hideBanner(); });
+document.getElementById('cookie-accept-necessary').addEventListener('click', () => { applyConsent('necessary'); hideBanner(); });
+
+/* Cookie settings button (🍪) */
+const cookieSettingsBtn = document.getElementById('cookie-settings-btn');
+const cookiePrefsPanel  = document.getElementById('cookie-prefs-panel');
+
+function closeCookiePrefs() {
+  cookiePrefsPanel.classList.add('hidden');
+  cookieSettingsBtn.setAttribute('aria-expanded', 'false');
+}
+function openCookiePrefs() {
+  if (!a11yPanel.classList.contains('hidden')) closeA11y();
+  cookiePrefsPanel.classList.remove('hidden');
+  cookieSettingsBtn.setAttribute('aria-expanded', 'true');
+  cookiePrefsPanel.querySelector('button').focus();
+}
+cookieSettingsBtn.addEventListener('click', () => {
+  cookiePrefsPanel.classList.contains('hidden') ? openCookiePrefs() : closeCookiePrefs();
 });
-document.getElementById('cookie-accept-necessary').addEventListener('click', () => {
-  localStorage.setItem(CONSENT_KEY, 'necessary');
-  hideBanner();
+
+/* OSM toggles in panel + modal */
+['osm-toggle-panel','osm-toggle-modal'].forEach(id => {
+  const btn = document.getElementById(id);
+  if (!btn) return;
+  btn.addEventListener('click', () => {
+    const nowOn = btn.getAttribute('aria-pressed') !== 'true';
+    syncOsmToggles(nowOn);
+    if (nowOn) loadMap(); else unloadMap();
+  });
+});
+
+function savePrefs() {
+  const osmOn = document.getElementById('osm-toggle-panel').getAttribute('aria-pressed') === 'true'
+             || document.getElementById('osm-toggle-modal').getAttribute('aria-pressed') === 'true';
+  applyConsent(osmOn ? 'all' : 'necessary');
+}
+
+document.getElementById('prefs-accept-all').addEventListener('click', () => { applyConsent('all');       closeCookiePrefs(); });
+document.getElementById('prefs-reject-all').addEventListener('click', () => { applyConsent('necessary'); closeCookiePrefs(); });
+document.getElementById('prefs-save').addEventListener('click',       () => { savePrefs();               closeCookiePrefs(); });
+
+document.getElementById('modal-accept-all').addEventListener('click', () => { applyConsent('all');       closeCookie(); });
+document.getElementById('modal-reject-all').addEventListener('click', () => { applyConsent('necessary'); closeCookie(); });
+document.getElementById('modal-save').addEventListener('click',       () => { savePrefs();               closeCookie(); });
+
+document.addEventListener('click', e => {
+  if (!cookieSettingsBtn.contains(e.target) && !cookiePrefsPanel.contains(e.target)) closeCookiePrefs();
 });
 
 /* ── PRIVACY MODAL ── */
@@ -1643,9 +1864,10 @@ cookieOverlay.addEventListener('click', e => { if (e.target === cookieOverlay) c
 /* ── CHIUSURA MODAL CON ESC ── */
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
-    if (!privacyOverlay.classList.contains('hidden')) closePrivacy();
-    if (!cookieOverlay.classList.contains('hidden'))  closeCookie();
-    if (!a11yPanel.classList.contains('hidden'))      closeA11y();
+    if (!privacyOverlay.classList.contains('hidden'))    closePrivacy();
+    if (!cookieOverlay.classList.contains('hidden'))     closeCookie();
+    if (!a11yPanel.classList.contains('hidden'))         closeA11y();
+    if (!cookiePrefsPanel.classList.contains('hidden'))  closeCookiePrefs();
   }
 });
 
