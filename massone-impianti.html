@@ -577,6 +577,73 @@
     #privacy-modal p  { font-size: .87rem; color: var(--muted); line-height: 1.7; }
     #privacy-modal ul { font-size: .87rem; color: var(--muted); line-height: 1.7; padding-left: 20px; }
 
+    /* ─── COOKIE MODAL (fixed overlay, same pattern as privacy) ──── */
+    #cookie-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.55);
+      z-index: 600;
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    #cookie-overlay.hidden { display: none; }
+    #cookie-modal {
+      background: var(--white);
+      border-radius: 14px;
+      padding: 28px 24px;
+      max-width: 580px; width: 100%;
+      max-height: 85vh; overflow-y: auto;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,.3);
+    }
+    #cookie-modal h3 { font-size: .88rem; font-weight: 700; color: var(--navy); margin: 16px 0 6px; text-transform: uppercase; letter-spacing: .06em; }
+    #cookie-modal p  { font-size: .87rem; color: var(--muted); line-height: 1.7; }
+
+    /* ─── ACCESSIBILITY WIDGET ───────────────────────────────────── */
+    #a11y-widget-btn {
+      position: fixed; left: 16px; bottom: 90px; z-index: 400;
+      width: 48px; height: 48px;
+      background: var(--navy); color: var(--white);
+      border: none; border-radius: 50%; cursor: pointer;
+      font-size: 1.2rem; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(27,58,107,.45);
+      transition: background .2s, transform .2s;
+    }
+    #a11y-widget-btn:hover { background: var(--navy2); transform: scale(1.08); }
+    #a11y-panel {
+      position: fixed; left: 16px; bottom: 150px; z-index: 400;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px; width: 230px;
+      box-shadow: var(--shadow2);
+    }
+    #a11y-panel.hidden { display: none; }
+    .a11y-title {
+      font-size: .75rem; font-weight: 700; color: var(--navy);
+      text-transform: uppercase; letter-spacing: .1em; margin-bottom: 12px;
+      border-bottom: 1px solid var(--border); padding-bottom: 8px;
+    }
+    .a11y-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px; margin-bottom: 10px; font-size: .82rem; color: var(--text);
+    }
+    .a11y-btn-group { display: flex; gap: 4px; }
+    .a11y-btn {
+      min-width: 30px; min-height: 30px; padding: 3px 7px;
+      border: 1.5px solid var(--border); border-radius: 6px;
+      background: var(--light); color: var(--text);
+      font-family: inherit; font-size: .82rem; font-weight: 700;
+      cursor: pointer; transition: background .15s, border-color .15s;
+    }
+    .a11y-btn:hover { background: var(--light2); border-color: var(--navy2); }
+    .a11y-btn[aria-pressed="true"] { background: var(--navy); color: var(--white); border-color: var(--navy); }
+    .a11y-reset-row { margin-top: 6px; }
+    .a11y-reset-row .a11y-btn { width: 100%; }
+
+    /* ─── ACCESSIBILITY BODY CLASSES ─────────────────────────────── */
+    body.a11y-high-contrast { filter: contrast(1.8); }
+    body.a11y-grayscale     { filter: grayscale(1); }
+    body.a11y-high-contrast.a11y-grayscale { filter: contrast(1.8) grayscale(1); }
+    body.a11y-underline a   { text-decoration: underline !important; }
+
     /* ─── RESPONSIVE: ≥640px ─────────────────────────────────────── */
     @media (min-width: 640px) {
       .container { padding: 0 24px; }
@@ -659,8 +726,10 @@
       .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
       .area-map { margin-bottom: 0; }
 
-      /* Scroll top position with cookie banner */
-      #scrollTop { bottom: 28px; right: 28px; }
+      /* Scroll top + a11y widget on desktop */
+      #scrollTop        { bottom: 28px; right: 28px; }
+      #a11y-widget-btn  { bottom: 28px; left: 28px; }
+      #a11y-panel       { bottom: 88px; left: 28px; }
     }
   </style>
 </head>
@@ -992,7 +1061,7 @@
         <p class="section-sub">Compila il modulo e ti richiamiamo noi, oppure chiama direttamente al <a href="tel:3387326239" style="color:var(--navy);font-weight:700;">338 732 6239</a>.</p>
       </div>
 
-      <form id="contact-form" novalidate aria-label="Modulo di contatto" style="max-width:680px;">
+      <form id="contact-form" novalidate aria-label="Modulo di contatto" style="max-width:680px;margin:0 auto;">
         <noscript>
           <p style="background:#fdecea;border:1px solid #ef9a9a;padding:14px;border-radius:8px;margin-bottom:16px;color:#b71c1c;">
             JavaScript è disabilitato. Per contattarci chiama direttamente al <a href="tel:3387326239">338 732 6239</a>.
@@ -1217,6 +1286,52 @@
 <!-- ── SCROLL TOP ── -->
 <button id="scrollTop" aria-label="Torna all'inizio della pagina">↑</button>
 
+<!-- ── ACCESSIBILITY WIDGET ── -->
+<button
+  id="a11y-widget-btn"
+  aria-label="Opzioni di accessibilità"
+  aria-expanded="false"
+  aria-controls="a11y-panel"
+  title="Accessibilità"
+>♿</button>
+
+<div
+  id="a11y-panel"
+  class="hidden"
+  role="region"
+  aria-label="Strumenti di accessibilità"
+>
+  <div class="a11y-title">Accessibilità</div>
+
+  <div class="a11y-row">
+    <span id="a11y-font-label">Dimensione testo</span>
+    <div class="a11y-btn-group" role="group" aria-labelledby="a11y-font-label">
+      <button class="a11y-btn" id="a11y-font-decrease" aria-label="Riduci testo">A−</button>
+      <button class="a11y-btn" id="a11y-font-reset"    aria-label="Testo normale">A</button>
+      <button class="a11y-btn" id="a11y-font-increase" aria-label="Ingrandisci testo">A+</button>
+    </div>
+  </div>
+
+  <div class="a11y-row">
+    <label for="a11y-contrast">Alto contrasto</label>
+    <button class="a11y-btn" id="a11y-contrast" aria-pressed="false">ON/OFF</button>
+  </div>
+
+  <div class="a11y-row">
+    <label for="a11y-grayscale">Scala di grigi</label>
+    <button class="a11y-btn" id="a11y-grayscale" aria-pressed="false">ON/OFF</button>
+  </div>
+
+  <div class="a11y-row">
+    <label for="a11y-underline">Sottolinea link</label>
+    <button class="a11y-btn" id="a11y-underline" aria-pressed="false">ON/OFF</button>
+  </div>
+
+  <div class="a11y-reset-row">
+    <button class="a11y-btn" id="a11y-reset" aria-label="Ripristina impostazioni accessibilità">Ripristina tutto</button>
+  </div>
+</div>
+
 <!-- ── COOKIE BANNER ── -->
 <div
   id="cookie-banner"
@@ -1286,7 +1401,7 @@
   aria-modal="true"
   aria-labelledby="cookie-modal-title"
 >
-  <div id="privacy-modal">
+  <div id="cookie-modal">
     <div class="modal-header">
       <h2 id="cookie-modal-title">Cookie Policy</h2>
       <button class="modal-close" id="close-cookie" aria-label="Chiudi cookie policy">✕</button>
@@ -1431,13 +1546,16 @@ function loadMap() {
 
 function hideBanner() {
   document.getElementById('cookie-banner').classList.add('hidden');
-  document.getElementById('scrollTop').style.bottom = '28px';
+  document.getElementById('scrollTop').style.bottom = '';
+  document.getElementById('a11y-widget-btn').style.bottom = '';
+  document.getElementById('a11y-panel').style.bottom = '';
 }
 
 function showBanner() {
-  const banner = document.getElementById('cookie-banner');
-  banner.classList.remove('hidden');
+  document.getElementById('cookie-banner').classList.remove('hidden');
   document.getElementById('scrollTop').style.bottom = '80px';
+  document.getElementById('a11y-widget-btn').style.bottom = '90px';
+  document.getElementById('a11y-panel').style.bottom = '150px';
 }
 
 // Inizializza in base a preferenza salvata
@@ -1507,7 +1625,70 @@ document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
     if (!privacyOverlay.classList.contains('hidden')) closePrivacy();
     if (!cookieOverlay.classList.contains('hidden'))  closeCookie();
+    if (!a11yPanel.classList.contains('hidden'))      closeA11y();
   }
+});
+
+/* ── ACCESSIBILITY WIDGET ── */
+const a11yBtn   = document.getElementById('a11y-widget-btn');
+const a11yPanel = document.getElementById('a11y-panel');
+let a11yFontSize = 100;
+
+function closeA11y() {
+  a11yPanel.classList.add('hidden');
+  a11yBtn.setAttribute('aria-expanded', 'false');
+}
+
+a11yBtn.addEventListener('click', () => {
+  const isOpen = !a11yPanel.classList.contains('hidden');
+  if (isOpen) {
+    closeA11y();
+  } else {
+    a11yPanel.classList.remove('hidden');
+    a11yBtn.setAttribute('aria-expanded', 'true');
+    a11yPanel.querySelector('button').focus();
+  }
+});
+
+// Chiudi pannello cliccando fuori
+document.addEventListener('click', e => {
+  if (!a11yBtn.contains(e.target) && !a11yPanel.contains(e.target)) {
+    closeA11y();
+  }
+});
+
+// Dimensione testo
+document.getElementById('a11y-font-increase').addEventListener('click', () => {
+  a11yFontSize = Math.min(a11yFontSize + 10, 150);
+  document.documentElement.style.fontSize = a11yFontSize + '%';
+});
+document.getElementById('a11y-font-decrease').addEventListener('click', () => {
+  a11yFontSize = Math.max(a11yFontSize - 10, 80);
+  document.documentElement.style.fontSize = a11yFontSize + '%';
+});
+document.getElementById('a11y-font-reset').addEventListener('click', () => {
+  a11yFontSize = 100;
+  document.documentElement.style.fontSize = '';
+});
+
+// Toggles generici
+function setupToggle(btnId, bodyClass) {
+  document.getElementById(btnId).addEventListener('click', function() {
+    document.body.classList.toggle(bodyClass);
+    const on = document.body.classList.contains(bodyClass);
+    this.setAttribute('aria-pressed', String(on));
+  });
+}
+setupToggle('a11y-contrast',  'a11y-high-contrast');
+setupToggle('a11y-grayscale', 'a11y-grayscale');
+setupToggle('a11y-underline', 'a11y-underline');
+
+// Ripristina tutto
+document.getElementById('a11y-reset').addEventListener('click', () => {
+  a11yFontSize = 100;
+  document.documentElement.style.fontSize = '';
+  document.body.classList.remove('a11y-high-contrast', 'a11y-grayscale', 'a11y-underline');
+  a11yPanel.querySelectorAll('[aria-pressed]').forEach(b => b.setAttribute('aria-pressed', 'false'));
 });
 </script>
 </body>
