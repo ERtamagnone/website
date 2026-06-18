@@ -581,7 +581,7 @@
 
     /* ─── COOKIE PREFS PANEL ─────────────────────────────────────── */
     #cookie-prefs-panel {
-      position: fixed; left: 16px; bottom: 150px; z-index: 400;
+      position: fixed; left: 72px; bottom: 150px; z-index: 400;
       background: var(--white); border: 1px solid var(--border);
       border-radius: 12px; padding: 16px; width: 268px;
       box-shadow: var(--shadow2);
@@ -819,7 +819,7 @@
       #a11y-widget-btn     { bottom: 28px; left: 28px; }
       #a11y-panel          { bottom: 88px; left: 28px; }
       #cookie-settings-btn { bottom: 28px; left: 84px; }
-      #cookie-prefs-panel  { bottom: 88px; left: 28px; }
+      #cookie-prefs-panel  { bottom: 88px; left: 84px; }
     }
   </style>
 </head>
@@ -1433,7 +1433,6 @@
   aria-expanded="false"
   aria-controls="cookie-prefs-panel"
   title="Preferenze cookie"
-  style="position:relative;"
 >
   <span aria-hidden="true">🍪</span>
   <span id="cookie-dot" aria-hidden="true"></span>
@@ -1886,6 +1885,7 @@ a11yBtn.addEventListener('click', () => {
   if (isOpen) {
     closeA11y();
   } else {
+    if (!cookiePrefsPanel.classList.contains('hidden')) closeCookiePrefs();
     a11yPanel.classList.remove('hidden');
     a11yBtn.setAttribute('aria-expanded', 'true');
     a11yPanel.querySelector('button').focus();
